@@ -41,9 +41,10 @@ int main (int argc, char *const *argv);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // - INPUTS: - a: Cota inferior del intervalo
 //           - b: Cota superior del intervalo
-// - OUTPUTS: -
-// - DESCRIPTION: 
-//metodo del trapecio adaptativo, recursion arborea
+//			 - tol: Tolerancia ingresada por el usuario
+//		     - iterations: COntador del numero de iteraciones del metodo
+// - OUTPUTS: Devuelve el resultado del Metodo del Trapecio Simple Adaptativo
+// - DESCRIPTION: Implementacion del metodo del Trapecio Simple Adaptativo, utilizando recursion arborea
 
 long double adaptativeTrapeze(long double a, long double b, long double tol, int &iterations) {
 
@@ -66,9 +67,10 @@ long double adaptativeTrapeze(long double a, long double b, long double tol, int
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // - INPUTS: - a: Cota inferior del intervalo
 //           - b: Cota superior del intervalo
-// - OUTPUTS: -
-// - DESCRIPTION: 
-//metodo de simpson 1/3 adaptativo con recursion arborea
+//			 - tol: Tolerancia ingresada por el usuario
+//		     - iterations: COntador del numero de iteraciones del metodo
+// - OUTPUTS: Devuelve el resultado del Metodo de Simpson Un Tercio Adaptativo
+// - DESCRIPTION: Implementacion del metodo de Simpson Un Tercio Adaptativo, utilizando recursion arborea
 
 long double adaptativeOneThird (long double a, long double b, long double tol, int &iterations) {
 
@@ -92,9 +94,10 @@ long double adaptativeOneThird (long double a, long double b, long double tol, i
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // - INPUTS: - a: Cota inferior del intervalo
 //           - b: Cota superior del intervalo
-// - OUTPUTS: -
-// - DESCRIPTION: 
-//metodo de simpson 3/8 adaptativo, recursion arborea 
+//			 - tol: Tolerancia ingresada por el usuario
+//		     - iterations: COntador del numero de iteraciones del metodo
+// - OUTPUTS: Devuelve el resultado del Metodo de Simpson Tres Octavos Adaptativo
+// - DESCRIPTION: Implementacion del metodo de Simpson Tres Octavos Adaptativo, utilizando recursion arborea
 
 long double adaptativeThreeHeighths (long double a, long double b, long double tol, int &iterations) {
 
@@ -135,7 +138,7 @@ long double applyFunction (long double x) {
 // - INPUTS: - a: Cota inferior del intervalo
 //           - b: Cota superior del intervalo
 // - OUTPUTS: Devuelve el resultado del metodo del trapecio simple
-// - DESCRIPTION: Aplicacion del metodo del "Trapecio Simple" sobre los parametros de entrada
+// - DESCRIPTION: Implementacion del metodo del Trapecio Simple
 
 long double trapeze (long double a, long double b) {
 
@@ -149,9 +152,8 @@ long double trapeze (long double a, long double b) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // - INPUTS: - a: Cota inferior del intervalo
 //           - b: Cota superior del intervalo
-// - OUTPUTS: -
-// - DESCRIPTION: 
-//metodo de simpson 1/3 simple
+// - OUTPUTS: Devuelve el resultado del metodo de Simpson Un Tercio
+// - DESCRIPTION: Implementacion del metodo de Simpson Un Tercio
 
 long double oneThird (long double a, long double b) {
 
@@ -171,9 +173,8 @@ long double oneThird (long double a, long double b) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // - INPUTS: - a: Cota inferior del intervalo
 //           - b: Cota superior del intervalo
-// - OUTPUTS: -
-// - DESCRIPTION: 
-//metodo de simpson 3/8 simple
+// - OUTPUTS: Devuelve el resultado del metodo de Simpson Tres Octavos
+// - DESCRIPTION: Implementacion del metodo de Simpson Tres Octavos
 
 long double threeEighths (long double a, long double b) {
 
@@ -195,22 +196,18 @@ long double threeEighths (long double a, long double b) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////// MAIN ////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// - INPUTS: - argv[1]: Cantidad de imagenes de entrada
-//           - argv[2]: Nombre o ruta del archivo que contiene la mascara
-// - OUTPUTS: -
-// - DESCRIPTION: Ejecuta la etapa de "convolution" del pipeline, a cada imagen de entrada
 
 int main(int argc, char *const *argv) {
-	//iteraciones necesarias, inicio de variables
+
 	long double a, b, tol;
 	int c, iterations;
 	string method;
 	iterations = 0;
 
-	//recepcion de parametros con getopt
 	while( (c = getopt(argc, argv, "t:a:b:I: ")) != -1) {
 
       	switch(c){
+			  
 			case 't':
 				tol = atof(optarg);
 				break;
