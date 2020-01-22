@@ -1,10 +1,8 @@
 function [X] = generateCylinder(Te, n)
-%R es el radio inicial
-R = 1;
+R = 1; % Radio inicial del cilindro
 A = zeros(n);
 b = zeros(n, 1);
-%particiones iniciales
-particion = R / n;
+particion = R / n; % Particiones iniciales
 %indices iniciales de la matriz
 A(1, 1) = -1;
 A(1, 2) = 1;
@@ -36,4 +34,3 @@ end
 X = linsolve(A, b);
 
 end
-
